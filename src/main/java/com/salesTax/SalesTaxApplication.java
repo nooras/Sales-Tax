@@ -128,8 +128,6 @@ public class SalesTaxApplication implements CommandLineRunner {
 		list.add(new ProductDTO("Medical", "packet of headache pills"));
 		list.add(new ProductDTO("Food", "box of chocolates"));
 		list.add(new ProductDTO("Other", "bottle of perfume"));
-		list.add(new ProductDTO("book", "Book"));
-		list.add(new ProductDTO("Medical", "packet of headache pills"));
 		list.add(new ProductDTO("Food", "chocolate bar"));
 		list.add(new ProductDTO("Other", "music CD"));
 
