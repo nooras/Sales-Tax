@@ -50,11 +50,11 @@ Output 3:
 Sales Taxes: 6.70
 Total: 74.68
 
-## How to run Sales Tax SpringBoot JPA Application
+## How to run Sales Tax SpringBoot JPA Application (Please Read Full)
 1. Clone the project
 2. Create Database with name salesTax and update username/password in src/main/resources/appication.properties
-3. Insert multiple values in B such as: id, category and name OR insert value by un-commenting line number 32: addProduct(); in file SalesTaxApplication
-4. Run the SalesTaxApplication. Add values in console like this:
+3. Insert multiple values in DB such as: id, category and name OR insert value by un-commenting line number 32: addProduct(); in file SalesTaxApplication
+4. Run the SalesTaxApplication. Add values in console like this and hit double enter:
 	- Sample:
 		1 imported bottle of perfume at 27.99
 		1 bottle of perfume at 18.99
