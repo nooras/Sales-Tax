@@ -97,7 +97,4 @@ Sales Taxes: 6.66
 Total: 74.64
 ```
 
-<video width="820" height="440" controls>
-  <source src="SalesTaxApplication.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+<video width="820" height="440" src="SalesTaxApplication.mp4" controls/>
