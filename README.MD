@@ -96,5 +96,6 @@ Enter items of shopping baskets: (Example: 1 book at 12.49/ 1 imported book at 1
 Sales Taxes: 6.66
 Total: 74.64
 ```
+Video Demo: https://github.com/nooras/Sales-Tax/blob/master/SalesTaxApplication.mp4
 
 <video width="820" height="440" src="SalesTaxApplication.mp4" controls/>
