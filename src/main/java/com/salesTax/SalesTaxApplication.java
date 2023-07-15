@@ -36,7 +36,7 @@ public class SalesTaxApplication implements CommandLineRunner {
 		}
 	}
 
-	public void getDataFromUserAndRun() {
+	public void getDataFromUserAndRun() throws Exception {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter items of shopping baskets: (Example: 1 book at 12.49/ 1 imported book at 12.49) ");
 		ArrayList<String> arr = new ArrayList<>();
@@ -50,77 +50,8 @@ public class SalesTaxApplication implements CommandLineRunner {
 		}
 		sc.close();
 
-		runSalesTaxApp(arr);
+		ps.runSalesTaxApp(arr);
 	}
-
-	private void runSalesTaxApp(ArrayList<String> arr) {
-		try {
-			float totalSalesTax = 0;
-			float totalAmount = 0;
-
-			for (String products : arr) {
-				final String[] splitedArr = products.split(" at ");
-				final String firstPart = splitedArr[0];
-				final String[] arrs;
-				boolean isImported = false;
-
-				if (firstPart.contains("imported")) {
-					arrs = firstPart.split(" imported ");
-					isImported = true;
-				} else {
-					arrs = firstPart.split(" ", 2);
-				}
-
-				final float itemPrice = Float.parseFloat(splitedArr[1].trim());
-				final String itemName = arrs[1].trim();
-				float finalItemPriceWithTax = 0;
-
-				if (isImported && isApplicableForBasicTax(itemName)) {
-					totalSalesTax += itemPrice * 0.15;
-					finalItemPriceWithTax += itemPrice * 0.15 + itemPrice;
-				} else if (isImported) {
-					totalSalesTax += itemPrice * 0.05;
-					finalItemPriceWithTax += itemPrice * 0.05 + itemPrice;
-				} else if (isApplicableForBasicTax(itemName)) {
-					totalSalesTax += itemPrice * 0.1;
-					finalItemPriceWithTax += itemPrice * 0.1 + itemPrice;
-				}
-
-				if (finalItemPriceWithTax == 0) {
-					finalItemPriceWithTax = itemPrice;
-				}
-
-				totalAmount += finalItemPriceWithTax;
-				System.out.println(firstPart + ": " + roundOffValue(finalItemPriceWithTax));
-			}
-
-			System.out.println("Sales Taxes: " + roundOffValue(totalSalesTax));
-			System.out.println("Total: " + roundOffValue(totalAmount));
-		} catch (Exception e) {
-			System.out.println("You may have added wrong inputs. Enter Correct inputs. " + e.getMessage());
-		}
-	}
-
-	private boolean isApplicableForBasicTax(String itemName) throws Exception {
-		try {
-			List<ProductDTO> productDTOList = ps.findByName(itemName);
-			for (ProductDTO product : productDTOList) {
-				if (null != product && null != product.getCategory()
-						&& (product.getCategory().equalsIgnoreCase("food")
-								|| product.getCategory().equalsIgnoreCase("medical")
-								|| product.getCategory().equalsIgnoreCase("book"))) {
-					return false;
-				}
-			}
-			return true;
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
-	}
-
-	private double roundOffValue(float value) {
-		return Math.round(value * Math.pow(10, 2)) / Math.pow(10, 2);
-	}	
 
 	private void addProduct() throws Exception {
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
