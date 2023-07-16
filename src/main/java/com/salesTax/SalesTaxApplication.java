@@ -1,7 +1,6 @@
 package com.salesTax;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.salesTax.dto.ProductDTO;
-import com.salesTax.service.ProductService;
+import com.salesTax.service.SalesTaxService;
 
 @ComponentScan
 @EnableJpaRepositories
@@ -20,7 +18,7 @@ import com.salesTax.service.ProductService;
 public class SalesTaxApplication implements CommandLineRunner {
 	
 	@Autowired
-	private ProductService ps;
+	private SalesTaxService ps;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SalesTaxApplication.class, args);
@@ -29,7 +27,6 @@ public class SalesTaxApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		try {
-//			addProduct();
 			getDataFromUserAndRun();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,24 +50,6 @@ public class SalesTaxApplication implements CommandLineRunner {
 		ps.runSalesTaxApp(arr);
 	}
 
-	private void addProduct() throws Exception {
-		List<ProductDTO> list = new ArrayList<ProductDTO>();
-		list.add(new ProductDTO("book", "Book"));
-		list.add(new ProductDTO("Medical", "packet of headache pills"));
-		list.add(new ProductDTO("Food", "box of chocolates"));
-		list.add(new ProductDTO("Other", "bottle of perfume"));
-		list.add(new ProductDTO("Food", "chocolate bar"));
-		list.add(new ProductDTO("Other", "music CD"));
-
-		try {
-			for (ProductDTO product : list) {
-				ps.addProduct(product);
-			}
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
-
-	}
 }
 
 /*

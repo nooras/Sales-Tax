@@ -50,18 +50,33 @@ Output 3:
 Sales Taxes: 6.70
 Total: 74.68
 
+## OOPs Concept used in this project
+1. Inheritance
+2. Encapsulation
+3. Abstraction
+4. Polymorphism - Overriding
+5. Class & Objects
+
+## Code structure
+1. Package com.salestax.main have 3 files Base, CalculateBasicTax, Product Class
+	i. Base: Its abstract class having pre-data defined in this class. Additional have unimplemented method
+	ii. CalculateBasicTax: Its extends Base class and implements unimplemented method
+	iii. Product: This class extends CalculateBasicTax and its have product data
+2. Package com.salestax.service have 2 files
+	i. SalesTaxSevice: This file is interface
+	ii. SalesTaxSeviceImpl: This file implements interfaces methods
+
 ## How to run Sales Tax SpringBoot JPA Application (Please Read Full)
 1. Clone the project
-2. Create Database with name salesTax and update username/password in src/main/resources/appication.properties
-3. Insert multiple values in DB such as: id, category and name OR insert value by un-commenting line number 32: addProduct(); in file SalesTaxApplication
-4. Run the SalesTaxApplication. Add values in console like this and hit double enter:
+2. Add data in Base class by separating comma in Base constructor
+3. Run the SalesTaxApplication. Add values in console like this and hit double enter:
 	- Sample:
 		1 imported bottle of perfume at 27.99
 		1 bottle of perfume at 18.99
 		1 packet of headache pills at 9.75
 		1 box of imported chocolates at 11.25
-5. Assumptions: If data value not present in DB then Basic Tax will be apply on the product
-6. Sample Input - Output
+4. Assumptions: If data value not present in DB then Basic Tax will be apply on the product
+5. Sample Input - Output
 ```
 Enter items of shopping baskets: (Example: 1 book at 12.49/ 1 imported book at 12.49) 
 1 book at 12.49
